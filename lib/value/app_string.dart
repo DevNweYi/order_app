@@ -21,6 +21,7 @@ class AppString{
   static const String enter_name="Enter Name";
   static const String enter_phone="Enter Phone";
   static const String enter_password="Enter Password";
+  static const String enter_new_password="Enter New Password";
   static const String enter_confirm_password="Enter Confirm Password";
   static const String forget_password="Forget Password?";
   static const String donot_have_account="don't have Account? ";
@@ -71,7 +72,7 @@ class AppString{
   static const String see_all="See All";
   static const String promotion_item="Promotion Items";
   static const String new_product="New Products";
-  static const String Verify="Verify";
+  static const String verify="Verify";
   static const String otp_verification="Verification";
   static const String otp_verification_message="Enter the verification code sent to ";
   static const String donot_receive_code="don't receive code? ";
@@ -82,5 +83,7 @@ class AppString{
   static const String send="Send";
   static const String receive_your_issue="Receive your issue";
   static const String solve_issue="We will solve the issue.Thank you!";
-  static const String forget_password_verify_message="We will send you a verification code to your phone number.";
+  static const String forget_password_verify_message="We will send you a verification code to your phone number";
+  static const String create_new_password="Create New Password";
+  static const String save="Save";
 }

@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:order_app/api/apiservice.dart';
 import 'package:order_app/view/login_page.dart';
 import 'package:dio/dio.dart';
-import 'package:order_app/view/otp_page.dart';
 import 'package:order_app/view/register_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -68,8 +67,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: isDark? ThemeMode.dark : ThemeMode.light,
-      home: OTPPage(phone: "09999999999"),
-      /* AnimatedSplashScreen(
+      home: AnimatedSplashScreen(
         splash: 'assets/icons/launcher.png',
         nextScreen: isRegistered == null || isRegistered == false
             ? const RegisterPage()
@@ -77,7 +75,7 @@ class MyApp extends StatelessWidget {
                 isSaveToken: false,
               ),
         splashTransition: SplashTransition.fadeTransition,
-      ), */
+      ),
       builder: EasyLoading.init(),
     );
   }

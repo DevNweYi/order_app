@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:order_app/controller/otp_controller.dart';
 import 'package:order_app/value/app_color.dart';
+import 'package:order_app/view/new_password_page.dart';
 import 'package:order_app/widget/regular_text.dart';
 import 'package:order_app/widget/title_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,10 +20,11 @@ import 'init_page.dart';
 
 class OTPPage extends StatefulWidget {
   String phone;
-  OTPPage({super.key, required this.phone});
+  bool isForgetPassword;
+  OTPPage({super.key, required this.phone,required this.isForgetPassword});
 
   @override
-  State<OTPPage> createState() => _OTPPageState(phone);
+  State<OTPPage> createState() => _OTPPageState(phone, isForgetPassword);
 }
 
 class _OTPPageState extends State<OTPPage> {
@@ -31,8 +33,9 @@ class _OTPPageState extends State<OTPPage> {
   var otpController = Get.put(OTPController());
   var registerController = Get.put(RegisterController());
   String phone;
+  bool isForgetPassword;
 
-  _OTPPageState(this.phone);
+  _OTPPageState(this.phone, this.isForgetPassword);
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +100,11 @@ class _OTPPageState extends State<OTPPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            _insertClient();
+                            if (isForgetPassword == true) {
+                              Get.to(() => const NewPasswordPage());
+                            } else {
+                              _insertClient();
+                            }
                           },
                           child: Container(
                             margin:
@@ -117,7 +124,7 @@ class _OTPPageState extends State<OTPPage> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: const RegularText(
-                              text: AppString.Verify,
+                              text: AppString.verify,
                               color: AppColor.white,
                             ),
                           ),
@@ -183,13 +190,6 @@ class _OTPPageState extends State<OTPPage> {
               "UserPhone", registerController.phone_controller.text);
 
           AppSetting.getToken(registerController.phone_controller.text);
-
-          /* Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => InitPage(
-                        clientId: it,
-                      ))); */
 
           Navigator.pushAndRemoveUntil(context,
               MaterialPageRoute(builder: (BuildContext context) {

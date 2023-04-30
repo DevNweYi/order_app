@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:order_app/view/noti_setting_page.dart';
-import 'package:order_app/widget/title_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../value/app_color.dart';

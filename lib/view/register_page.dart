@@ -200,7 +200,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       RegisterController.instance.phoneAuthentication(
                           "+95${registerController.phone_controller.text.trim()}");
                       Get.to(() => OTPPage(
-                            phone: registerController.phone_controller.text,
+                            phone: registerController.phone_controller.text,isForgetPassword: false,
                           ));
                     } else {
                       EasyLoading.dismiss();
