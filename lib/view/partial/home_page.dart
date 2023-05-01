@@ -60,6 +60,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   _slider(),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         padding: EdgeInsets.only(left: 5, right: 5),
