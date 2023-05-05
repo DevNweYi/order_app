@@ -260,50 +260,48 @@ class _HomePageState extends State<HomePage> {
   Widget _category(List<SubMenuData> lstSubMenu) {
     return SizedBox(
       height: 100,
-      child: Expanded(
-        child: ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          physics: const AlwaysScrollableScrollPhysics(),
-          children: lstSubMenu.map((data) {
-            return InkWell(
-              onTap: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return MainPage(
-                    clientId: clientId,
-                    currentIndex: 1,
-                    subMenuId: data.subMenuId,
-                    subMenu: data.subMenuName,
-                  );
-                }));
-              },
-              child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: AppColor.primary_50,
-                  ),
-                  margin: EdgeInsets.all(5),
-                  height: 120,
-                  width: 120,
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(5),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/images/logo.png",
-                        height: 50,
-                        width: 50,
-                      ),
-                      SmallText(
-                        text: data.subMenuName,
-                        textOverflow: TextOverflow.ellipsis,
-                      )
-                    ],
-                  )),
-            );
-          }).toList(),
-        ),
+      child: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        physics: const AlwaysScrollableScrollPhysics(),
+        children: lstSubMenu.map((data) {
+          return InkWell(
+            onTap: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                return MainPage(
+                  clientId: clientId,
+                  currentIndex: 1,
+                  subMenuId: data.subMenuId,
+                  subMenu: data.subMenuName,
+                );
+              }));
+            },
+            child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: AppColor.primary_50,
+                ),
+                margin: EdgeInsets.all(5),
+                height: 120,
+                width: 120,
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(5),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      "assets/images/logo.png",
+                      height: 50,
+                      width: 50,
+                    ),
+                    SmallText(
+                      text: data.subMenuName,
+                      textOverflow: TextOverflow.ellipsis,
+                    )
+                  ],
+                )),
+          );
+        }).toList(),
       ),
     );
   }
