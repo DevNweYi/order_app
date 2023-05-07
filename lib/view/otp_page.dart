@@ -21,7 +21,7 @@ import 'init_page.dart';
 class OTPPage extends StatefulWidget {
   String phone;
   bool isForgetPassword;
-  OTPPage({super.key, required this.phone,required this.isForgetPassword});
+  OTPPage({super.key, required this.phone, required this.isForgetPassword});
 
   @override
   State<OTPPage> createState() => _OTPPageState(phone, isForgetPassword);
@@ -87,7 +87,11 @@ class _OTPPageState extends State<OTPPage> {
                                 .verifyOTP(otp)
                                 .then((isVerified) {
                               if (isVerified) {
-                                _insertClient();
+                                if (isForgetPassword == true) {
+                                  Get.to(() => const NewPasswordPage());
+                                } else {
+                                  _insertClient();
+                                }
                               } else {
                                 EasyLoading.dismiss();
                                 Get.back();
