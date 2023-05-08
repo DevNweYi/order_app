@@ -104,10 +104,23 @@ class _OTPPageState extends State<OTPPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            if (isForgetPassword == true) {
-                              Get.to(() => const NewPasswordPage());
-                            } else {
-                              _insertClient();
+                            if (otp == null) return;
+                            if (otp != null) {
+                              EasyLoading.show(status: AppString.loading);
+                              OTPController.instance
+                                  .verifyOTP(otp)
+                                  .then((isVerified) {
+                                if (isVerified) {
+                                  if (isForgetPassword == true) {
+                                    Get.to(() => const NewPasswordPage());
+                                  } else {
+                                    _insertClient();
+                                  }
+                                } else {
+                                  EasyLoading.dismiss();
+                                  Get.back();
+                                }
+                              });
                             }
                           },
                           child: Container(

@@ -3,7 +3,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:intl/intl.dart';
 
 class AppSetting{
-  static var formatter = NumberFormat('#,##,000');
+  // static var formatter = NumberFormat('#,##,000');
+  static var formatter = NumberFormat.decimalPattern('en_us');
 
   static String getTodayDate(){
     DateTime now=DateTime.now();
