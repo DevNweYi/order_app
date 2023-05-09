@@ -194,7 +194,11 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
 
   Widget _userData(ClientData data) {
     _clientId = data.ClientID;
-    address_controller.text = data.Address!;
+    if(data.Address == null) {
+      address_controller.text="";
+    } else {
+      address_controller.text = data.Address!;
+    }
     return Container(
       padding: EdgeInsets.all(15),
       child: Column(

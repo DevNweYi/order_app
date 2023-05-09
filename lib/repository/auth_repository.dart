@@ -19,7 +19,8 @@ class AuthRepository extends GetxController{
         if(e.code == 'invalid-phone-number'){
           Get.snackbar('Error', 'The provided phone number is not valid.');
         }else{
-          Get.snackbar('Error', 'Something went wrong. Try again.');
+          Get.snackbar('Error', e.message.toString());
+          // Get.snackbar('Error', 'Something went wrong. Try again.');
         }
       }, 
       codeSent: (verificationId, resendToken) {
