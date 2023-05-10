@@ -13,7 +13,7 @@ class _ApiService implements ApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://bosasp-001-site15.gtempurl.com/api/';
+    baseUrl ??= 'http://bosasp-001-site18.gtempurl.com/api/';
   }
 
   final Dio _dio;
