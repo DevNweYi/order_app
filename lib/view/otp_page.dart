@@ -88,6 +88,7 @@ class _OTPPageState extends State<OTPPage> {
                                 .then((isVerified) {
                               if (isVerified) {
                                 if (isForgetPassword == true) {
+                                  EasyLoading.dismiss();
                                   Get.to(() => const NewPasswordPage());
                                 } else {
                                   _insertClient();
@@ -112,6 +113,7 @@ class _OTPPageState extends State<OTPPage> {
                                   .then((isVerified) {
                                 if (isVerified) {
                                   if (isForgetPassword == true) {
+                                    EasyLoading.dismiss();
                                     Get.to(() => const NewPasswordPage());
                                   } else {
                                     _insertClient();

@@ -240,12 +240,13 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: AppColor.grey_200,
-                boxShadow: [
+                /* boxShadow: [
                   BoxShadow(
                       offset: Offset(0, 10),
                       blurRadius: 50,
                       color: AppColor.grey_200)
-                ]),
+                ] */
+                ),
             alignment: Alignment.center,
             child: TextField(
               maxLines: null,
