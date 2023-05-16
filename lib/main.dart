@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:order_app/api/apiservice.dart';
+import 'package:order_app/value/locale_string.dart';
 import 'package:order_app/view/login_page.dart';
 import 'package:dio/dio.dart';
 import 'package:order_app/view/register_page.dart';
@@ -51,6 +52,8 @@ class MyApp extends StatelessWidget {
     Get.put(apiService);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      translations: LocaleString(),
+      locale: const Locale('en','US'),
       title: 'Flutter Demo',
       theme: ThemeData(
           // This is the theme of your application.

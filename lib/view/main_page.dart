@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:order_app/value/app_color.dart';
 import 'package:order_app/view/partial/home_page.dart';
 import 'package:order_app/view/partial/order_page.dart';
@@ -69,9 +70,9 @@ class _MainPageState extends State<MainPage> {
         child: BottomNavigationBar(
             currentIndex: _currentIndex,
             onTap: onNavTapped,
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home), label: AppString.home),
+                  icon: Icon(Icons.home), label: 'home'.tr),
               BottomNavigationBarItem(
                   icon: Icon(Icons.view_in_ar), label: AppString.product),
               BottomNavigationBarItem(

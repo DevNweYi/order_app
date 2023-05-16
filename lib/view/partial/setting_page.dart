@@ -9,6 +9,7 @@ import '../../widget/regular_text.dart';
 import '../../widget/small_text.dart';
 import '../about_setting_page.dart';
 import '../help_setting_page.dart';
+import '../language_setting_page.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -129,7 +130,10 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                           IconButton(
                             icon: Icon(Icons.arrow_right),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => LanguageSettingPage()));
+                            },
                           )
                         ],
                       ),
