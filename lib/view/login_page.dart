@@ -33,8 +33,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    /* phone_controller.text = "09784314734";
-    password_controller.text = "123"; */
+    phone_controller.text = "09784314734";
+    password_controller.text = "123";
   }
 
   @override

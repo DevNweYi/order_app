@@ -38,7 +38,8 @@ class _SettingPageState extends State<SettingPage> {
             SizedBox(
               height: 30,
             ),
-            Text(AppString.setting,style:Theme.of(context).textTheme.headline5),
+            Text(AppString.setting,
+                style: Theme.of(context).textTheme.headline5),
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +47,8 @@ class _SettingPageState extends State<SettingPage> {
                   SizedBox(
                     height: 50,
                   ),
-                  Text(AppString.account,style:Theme.of(context).textTheme.subtitle1),
+                  Text(AppString.account,
+                      style: Theme.of(context).textTheme.subtitle1),
                   SizedBox(
                     height: 20,
                   ),
@@ -67,7 +69,10 @@ class _SettingPageState extends State<SettingPage> {
                                 future: getUserName(),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    return Text(snapshot.data!,style:Theme.of(context).textTheme.bodyText1);                                
+                                    return Text(snapshot.data!,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1);
                                   } else if (snapshot.hasError) {
                                     return RegularText(
                                         text: snapshot.error.toString());
@@ -83,7 +88,10 @@ class _SettingPageState extends State<SettingPage> {
                                 future: getUserPhone(),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    return Text(snapshot.data!,style:Theme.of(context).textTheme.bodyText2);                               
+                                    return Text(snapshot.data!,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2);
                                   } else if (snapshot.hasError) {
                                     return SmallText(
                                         text: snapshot.error.toString());
@@ -101,7 +109,8 @@ class _SettingPageState extends State<SettingPage> {
                     height: 1,
                     color: AppColor.grey_100,
                   ),
-                   Text(AppString.setting,style:Theme.of(context).textTheme.subtitle1),                 
+                  Text(AppString.setting,
+                      style: Theme.of(context).textTheme.subtitle1),
                   SizedBox(
                     height: 20,
                   ),
@@ -109,7 +118,7 @@ class _SettingPageState extends State<SettingPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children:  [
+                        children: [
                           CircleAvatar(
                               backgroundColor: Color(0xFFFFF3E0),
                               child: Icon(
@@ -118,21 +127,39 @@ class _SettingPageState extends State<SettingPage> {
                               )),
                           SizedBox(
                             width: 20,
-                          ),                        
-                           Text(AppString.language,style:Theme.of(context).textTheme.bodyText1),
+                          ),
+                          Text(AppString.language,
+                              style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
                       Row(
-                        children: [                        
-                          Text('English',style:Theme.of(context).textTheme.bodyText2),
+                        children: [
+                          FutureBuilder<String?>(
+                            future: getLanguage(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return Text(snapshot.data!,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2);
+                              } else if (snapshot.hasError) {
+                                return SmallText(
+                                    text: snapshot.error.toString());
+                              }
+                              return Text('English',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2);
+                            },
+                          ),
                           SizedBox(
                             width: 5,
                           ),
                           IconButton(
                             icon: Icon(Icons.arrow_right),
                             onPressed: () {
-                              Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => LanguageSettingPage()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => LanguageSettingPage()));
                             },
                           )
                         ],
@@ -155,15 +182,16 @@ class _SettingPageState extends State<SettingPage> {
                               )),
                           SizedBox(
                             width: 20,
-                          ),                        
-                          Text(AppString.notification,style:Theme.of(context).textTheme.bodyText1),
+                          ),
+                          Text(AppString.notification,
+                              style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
                       IconButton(
                         icon: Icon(Icons.arrow_right),
                         onPressed: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => const NotiSettingPage()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const NotiSettingPage()));
                         },
                       )
                     ],
@@ -175,7 +203,7 @@ class _SettingPageState extends State<SettingPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                          children:  [
+                          children: [
                             CircleAvatar(
                                 backgroundColor: Color(0xFFEDE7F6),
                                 child: Icon(
@@ -184,20 +212,21 @@ class _SettingPageState extends State<SettingPage> {
                                 )),
                             SizedBox(
                               width: 20,
-                            ),                            
-                            Text(AppString.dark_mode,style:Theme.of(context).textTheme.bodyText1),
+                            ),
+                            Text(AppString.dark_mode,
+                                style: Theme.of(context).textTheme.bodyText1),
                           ],
                         ),
                         FutureBuilder<bool>(
                             future: getIsDark(),
                             builder: (context, snapshot) {
-                              if (snapshot.hasData) {                              
-                                isSwitched = snapshot.data!;                               
+                              if (snapshot.hasData) {
+                                isSwitched = snapshot.data!;
                                 return Switch(
                                   value: isSwitched,
                                   onChanged: (value) {
                                     setState(() {
-                                      isSwitched=value;
+                                      isSwitched = value;
                                     });
                                     setTheme(value);
                                     if (value) {
@@ -222,7 +251,7 @@ class _SettingPageState extends State<SettingPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children:  [
+                        children: [
                           CircleAvatar(
                               backgroundColor: Color(0xFFE1F5FE),
                               child: Icon(
@@ -231,15 +260,16 @@ class _SettingPageState extends State<SettingPage> {
                               )),
                           SizedBox(
                             width: 20,
-                          ),                        
-                           Text(AppString.help,style:Theme.of(context).textTheme.bodyText1),
+                          ),
+                          Text(AppString.help,
+                              style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
                       IconButton(
                         icon: Icon(Icons.arrow_right),
                         onPressed: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => const HelpSettingPage()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const HelpSettingPage()));
                         },
                       )
                     ],
@@ -260,15 +290,16 @@ class _SettingPageState extends State<SettingPage> {
                               )),
                           SizedBox(
                             width: 20,
-                          ),                         
-                          Text(AppString.about,style:Theme.of(context).textTheme.bodyText1),
+                          ),
+                          Text(AppString.about,
+                              style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
                       IconButton(
                         icon: Icon(Icons.arrow_right),
                         onPressed: () {
-                           Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => const AboutSettingPage()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const AboutSettingPage()));
                         },
                       )
                     ],
@@ -295,13 +326,12 @@ class _SettingPageState extends State<SettingPage> {
   Future<bool> getIsDark() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     bool? isDark = sharedPreferences.getBool("IsDark");
-    if(isDark == null){
-        return false;
-    }else{
-      if(isDark){
+    if (isDark == null) {
+      return false;
+    } else {
+      if (isDark) {
         return true;
-      }
-      else {
+      } else {
         return false;
       }
     }
@@ -310,5 +340,10 @@ class _SettingPageState extends State<SettingPage> {
   Future<void> setTheme(value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setBool("IsDark", value);
+  }
+
+  Future<String?> getLanguage() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString("Language");
   }
 }

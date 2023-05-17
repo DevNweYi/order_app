@@ -31,18 +31,24 @@ Future<void> main() async {
   if(sharedPreferences.getBool("IsDark") != null && sharedPreferences.getBool("IsDark") == true){
       isDark=true;
   }
+  bool isMyanmar=false;
+  if(sharedPreferences.getString("Language")!=null && sharedPreferences.getString("Language")=="Myanmar"){
+    isMyanmar=true;
+  }
 
   runApp(MyApp(
     isRegistered: isRegistered,
     isDark: isDark,
+    isMyanmar: isMyanmar,
   ));
 }
 
 class MyApp extends StatelessWidget {
   bool? isRegistered;
   bool isDark;
+  bool isMyanmar;
 
-  MyApp({super.key, required this.isRegistered,required this.isDark});
+  MyApp({super.key, required this.isRegistered,required this.isDark,required this.isMyanmar});
 
   // This widget is the root of your application.
   @override
@@ -53,7 +59,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translations: LocaleString(),
-      locale: const Locale('en','US'),
+      locale: isMyanmar? const Locale('my','MM') : const Locale('en','US'),
       title: 'Flutter Demo',
       theme: ThemeData(
           // This is the theme of your application.

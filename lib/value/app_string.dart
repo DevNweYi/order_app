@@ -66,6 +66,7 @@ class AppString{
   static const String enter_body="Enter Body";
   static const String account="Account";
   static const String language="Language";
+  static const String change_language="Change Language";
   static const String dark_mode="Dark Mode";
   static const String help="Help";
   static const String about="About";
