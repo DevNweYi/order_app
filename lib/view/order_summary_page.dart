@@ -109,7 +109,7 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                   Text(AppString.total,
+                   Text('total'.tr,
                     style: Theme.of(context).textTheme.headline6),
                     FutureBuilder<int>(
                         future: DatabaseHelper().getTotalCartAmount(),
@@ -182,7 +182,7 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                       style: ButtonStyle(
                           padding: MaterialStateProperty.all(EdgeInsets.only(
                               left: 30, right: 30, top: 20, bottom: 20))),
-                      child: const Text(AppString.send_order)),
+                      child: Text('send_order'.tr)),
                 ),
               ),
             ],

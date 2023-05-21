@@ -39,8 +39,8 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.primary_700,
-        title: const TitleText(
-          text: AppString.cart,
+        title: TitleText(
+          text: 'cart'.tr,
           color: AppColor.white,
         ),
         actions: [
@@ -104,7 +104,7 @@ class _CartPageState extends State<CartPage> {
                   padding: const EdgeInsets.only(left: 20),
                   child: Column(
                     children: [
-                      Text(AppString.total,
+                      Text('total'.tr,
                           style: Theme.of(context).textTheme.bodyText1),
                       FutureBuilder<int>(
                           future: DatabaseHelper().getTotalCartAmount(),

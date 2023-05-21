@@ -77,7 +77,7 @@ class _ProductPageState extends State<ProductPage> {
               children: [
                 ActionBarView(
                   clientId: clientId,
-                  pageTitle: AppString.product,
+                  pageTitle: 'product'.tr,
                 ),
                 Container(
                   height: 1,
@@ -112,7 +112,7 @@ class _ProductPageState extends State<ProductPage> {
                               if (value.isNotEmpty) {
                                 _reloadData(
                                     subMenuId: 0,
-                                    subMenuName: "${AppString.search} $value",
+                                    subMenuName: "${'search'.tr} $value",
                                     isSearch: true,
                                     searchValue: value);
                               } else {
@@ -124,7 +124,7 @@ class _ProductPageState extends State<ProductPage> {
                             },
                             style: TextStyle(color: AppColor.white),
                             decoration: InputDecoration(
-                              hintText: AppString.search,
+                              hintText: 'search'.tr,
                               hintStyle: TextStyle(color: AppColor.white),
                               prefixIcon: const Icon(
                                 Icons.search,
@@ -248,7 +248,7 @@ class _ProductPageState extends State<ProductPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text(AppString.product_detail),
+            title: Text('product_detail'.tr),
             content: SingleChildScrollView(
                 child: ListBody(
               children: [
@@ -281,8 +281,8 @@ class _ProductPageState extends State<ProductPage> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Text(
-                    AppString.close,
+                  child: Text(
+                    'close'.tr,
                     style: TextStyle(color: Colors.blueGrey),
                   )),
             ],
@@ -297,7 +297,7 @@ class _ProductPageState extends State<ProductPage> {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Text(AppString.categories,style:Theme.of(context).textTheme.headline6),                
+                Text('categories'.tr,style:Theme.of(context).textTheme.headline6),                
                 const SizedBox(height: 20),
                 ListView.builder(
                   shrinkWrap: true,

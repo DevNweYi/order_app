@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                       snapshot.data!;
                   return ActionBarView(
                     clientId: clientId,
-                    pageTitle: AppString.home,
+                    pageTitle: 'home'.tr,
                   );
                 } else if (snapshot.hasError) {
                   return RegularText(text: snapshot.error.toString());
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SmallText(
-                              text: AppString.categories,
+                              text: 'categories'.tr,
                               color: AppColor.primary,
                               size: 16,
                             ),

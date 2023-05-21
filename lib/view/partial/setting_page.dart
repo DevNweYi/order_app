@@ -38,7 +38,7 @@ class _SettingPageState extends State<SettingPage> {
             SizedBox(
               height: 30,
             ),
-            Text(AppString.setting,
+            Text('setting'.tr,
                 style: Theme.of(context).textTheme.headline5),
             Container(
               child: Column(
@@ -109,7 +109,7 @@ class _SettingPageState extends State<SettingPage> {
                     height: 1,
                     color: AppColor.grey_100,
                   ),
-                  Text(AppString.setting,
+                  Text('setting'.tr,
                       style: Theme.of(context).textTheme.subtitle1),
                   SizedBox(
                     height: 20,

@@ -118,7 +118,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
                     Fluttertoast.showToast(msg: AppString.added_to_cart);
                     Navigator.pop(context, quantity);
                   },
-                  child: const Text(AppString.add_to_cart))
+                  child: Text('add_to_cart'.tr))
             ],
           )
         ],

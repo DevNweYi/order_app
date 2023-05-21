@@ -148,7 +148,7 @@ class _OrderPageState extends State<OrderPage> {
                             style: Theme.of(context).textTheme.bodyText1),
                         Row(
                           children: [
-                            Text("${AppString.total} : ",
+                            Text("${'total'.tr} : ",
                                 style: Theme.of(context).textTheme.bodyText1),
                             data.Total.toString().length > 3
                                 ? Text(

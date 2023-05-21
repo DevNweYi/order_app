@@ -74,11 +74,11 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.home), label: 'home'.tr),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.view_in_ar), label: AppString.product),
+                  icon: Icon(Icons.view_in_ar), label: 'product'.tr),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.list_alt), label: AppString.order),
+                  icon: Icon(Icons.list_alt), label: 'order'.tr),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: AppString.setting),
+                  icon: Icon(Icons.settings), label: 'setting'.tr),
             ]),
       ),
     );
