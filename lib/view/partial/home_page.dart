@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                                     clientId: clientId,
                                     currentIndex: 1,
                                     subMenuId: 0,
-                                    subMenu: AppString.all_product,
+                                    subMenu: 'all_product'.tr,
                                   );
                                 }));
                               },

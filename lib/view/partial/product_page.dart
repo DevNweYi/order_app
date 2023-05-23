@@ -35,7 +35,7 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   ApiService apiService = Get.find();
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  String _subMenu = AppString.all_product;
+  String _subMenu = 'all_product'.tr;
   final ProductController productController = Get.put(ProductController());
   int _subMenuId = 0;
   final int clientId;
@@ -118,7 +118,7 @@ class _ProductPageState extends State<ProductPage> {
                               } else {
                                 _reloadData(
                                     subMenuId: 0,
-                                    subMenuName: AppString.all_product,
+                                    subMenuName: 'all_product'.tr,
                                     isSearch: false);
                               }
                             },
@@ -139,7 +139,7 @@ class _ProductPageState extends State<ProductPage> {
                                         });
                                         _reloadData(
                                             subMenuId: 0,
-                                            subMenuName: AppString.all_product,
+                                            subMenuName: 'all_product'.tr,
                                             isSearch: false);
                                       },
                                       icon: const Icon(

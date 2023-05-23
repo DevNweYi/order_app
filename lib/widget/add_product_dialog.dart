@@ -115,7 +115,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
                     }
 
                     productController.lstRxProduct[index].Quantity = quantity;
-                    Fluttertoast.showToast(msg: AppString.added_to_cart);
+                    Fluttertoast.showToast(msg: 'added_to_cart'.tr);
                     Navigator.pop(context, quantity);
                   },
                   child: Text('add_to_cart'.tr))

@@ -4,6 +4,7 @@ import 'package:order_app/view/main_page.dart';
 import 'package:order_app/widget/regular_text.dart';
 import 'package:order_app/widget/small_text.dart';
 import 'package:order_app/widget/title_text.dart';
+import 'package:get/get.dart';
 
 import '../value/app_setting.dart';
 import '../value/app_string.dart';
@@ -145,7 +146,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                                     clientId: clientId,
                                     currentIndex: 2,
                                     subMenuId: 0,
-                                    subMenu: AppString.all_product,
+                                    subMenu: 'all_product'.tr,
                                   );
                                 }), (route) => false);
                               },
@@ -188,7 +189,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                           clientId: clientId,
                           currentIndex: 0,
                           subMenuId: 0,
-                          subMenu: AppString.all_product,
+                          subMenu: 'all_product'.tr,
                         );
                       }), (route) => false);
                     }),

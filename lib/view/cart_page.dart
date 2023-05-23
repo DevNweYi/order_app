@@ -143,7 +143,7 @@ class _CartPageState extends State<CartPage> {
                 ),
                 ElevatedButton(
                     onPressed: _orderPressed,
-                    child: Text(AppString.continue_to_order),
+                    child: Text('continue_to_order'.tr),
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all(EdgeInsets.all(20))))
               ],

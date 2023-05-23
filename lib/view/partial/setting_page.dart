@@ -47,7 +47,7 @@ class _SettingPageState extends State<SettingPage> {
                   SizedBox(
                     height: 50,
                   ),
-                  Text(AppString.account,
+                  Text('account'.tr,
                       style: Theme.of(context).textTheme.subtitle1),
                   SizedBox(
                     height: 20,
@@ -128,7 +128,7 @@ class _SettingPageState extends State<SettingPage> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text(AppString.language,
+                          Text('language'.tr,
                               style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),
@@ -261,7 +261,7 @@ class _SettingPageState extends State<SettingPage> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text(AppString.help,
+                          Text('help'.tr,
                               style: Theme.of(context).textTheme.bodyText1),
                         ],
                       ),

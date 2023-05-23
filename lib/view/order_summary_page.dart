@@ -47,8 +47,8 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: AppColor.primary_700,
-        title: const TitleText(
-          text: AppString.order_summary,
+        title: TitleText(
+          text: 'order_summary'.tr,
           color: AppColor.white,
         ),
       ),
@@ -62,7 +62,7 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                 padding: EdgeInsets.only(top: 20, left: 8, right: 8),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(AppString.delivery_address,
+                    child: Text('delivery_address'.tr,
                     style: Theme.of(context).textTheme.bodyText2),
                     ),
               ),
@@ -85,7 +85,7 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                 padding: EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(AppString.order_items,
+                    child: Text('order_items'.tr,
                     style: Theme.of(context).textTheme.bodyText2),
                     ),
               ),

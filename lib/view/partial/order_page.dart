@@ -42,7 +42,7 @@ class _OrderPageState extends State<OrderPage> {
       child: Scaffold(
           appBar: AppBar(
             title: TitleText(
-              text: AppString.my_orders,
+              text: 'my_orders'.tr,
               color: AppColor.white,
             ),
             backgroundColor: AppColor.primary_700,
@@ -243,7 +243,7 @@ class _OrderPageState extends State<OrderPage> {
                   clientId: clientId,
                   currentIndex: 1,
                   subMenuId: 0,
-                  subMenu: AppString.all_product,
+                  subMenu: 'all_product'.tr,
                 );
               }));
             },

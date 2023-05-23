@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../value/app_color.dart';
 import '../value/app_string.dart';
 import '../widget/title_text.dart';
+import 'package:get/get.dart';
 
 class IssueReceivePage extends StatefulWidget {
   const IssueReceivePage({super.key});
@@ -17,8 +18,8 @@ class _IssueReceivePageState extends State<IssueReceivePage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: AppColor.primary_700,
-            title: const TitleText(
-              text: AppString.help,
+            title: TitleText(
+              text: 'help'.tr,
               color: AppColor.white,
             )),
             body: Padding(

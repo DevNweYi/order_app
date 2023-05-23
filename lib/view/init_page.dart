@@ -134,7 +134,7 @@ class _InitPageState extends State<InitPage> {
                               clientId: clientId,
                               currentIndex: 0,
                               subMenuId: 0,
-                              subMenu: AppString.all_product,
+                              subMenu: 'all_product'.tr,
                             )));
               });
             } else if (snapshot.hasError) {
