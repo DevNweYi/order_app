@@ -112,7 +112,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   RegularText(
-                                      text: AppString.total_amount,
+                                      text: 'total_amount'.tr,
                                       color: Colors.black54,
                                       fontWeight: FontWeight.bold),
                                   totalAmount.toString().length > 3
@@ -150,7 +150,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                                   );
                                 }), (route) => false);
                               },
-                              child: Text(AppString.view_your_order)),
+                              child: Text('view_your_order'.tr)),
                         ),
                       ],
                     ),
@@ -164,7 +164,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                   height: 10,
                 ),
                 SmallText(
-                  text: AppString.receive_order_message,
+                  text: 'receive_order_message'.tr,
                   color: Colors.black54,
                 ),
                 SizedBox(

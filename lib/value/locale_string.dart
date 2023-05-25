@@ -28,6 +28,12 @@ class LocaleString extends Translations{
       'order_items':'Order Items',
       'delivery_address':'Delivery Address',
       'my_orders':'My Orders',
+      'promotion_item':'Promotion Items',
+      'new_product':'New Products',
+      'see_all':'See All',
+      'view_your_order':'View Your Order',
+      'total_amount':'Total Amount',
+      'receive_order_message':'We have received your order.',
     },
 
     'my_MM':{
@@ -53,6 +59,12 @@ class LocaleString extends Translations{
       'order_items':'မှာယူမည့်ပစ္စည်းများ',
       'delivery_address':'ပို.ဆောင်ရန်လိပ်စာ',
       'my_orders':'မိမိအော်ဒါများ',
+      'promotion_item':'ပရိုမိုးရှင်း',
+      'new_product':'ကုန်ပစ္စည်းအသစ်',
+      'see_all':'အားလုံးကြည့်ရန်',
+      'view_your_order':'အော်ဒါကြည့်ရန်',
+      'total_amount':'စုစုပေါင်း',
+      'receive_order_message':'အော်ဒါလက်ခံရရှိပါသည်',
     }
 
   };

@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 }));
                               },
-                              child: Text(AppString.see_all,
+                              child: Text('see_all'.tr,
                                   style: Theme.of(context).textTheme.bodyText2),
                             )
                           ],
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                         alignment: Alignment.centerLeft,
                         padding: EdgeInsets.all(5),
                         child: SmallText(
-                          text: AppString.new_product,
+                          text: 'new_product'.tr,
                           color: AppColor.primary,
                           size: 16,
                         ),
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                         alignment: Alignment.centerLeft,
                         padding: EdgeInsets.all(5),
                         child: SmallText(
-                          text: AppString.promotion_item,
+                          text: 'promotion_item'.tr,
                           color: AppColor.primary,
                           size: 16,
                         ),

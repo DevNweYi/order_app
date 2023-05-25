@@ -43,9 +43,9 @@ class AppString{
   static const String thank_you="Thank You";
   static const String date="Date";
   static const String order_no="Order No";
-  static const String total_amount="Total Amount";
-  static const String view_your_order="View Your Order";
-  static const String receive_order_message="We have received your order.";
+  // static const String total_amount="Total Amount";
+  // static const String view_your_order="View Your Order";
+  // static const String receive_order_message="We have received your order.";
   static const String ship_item_message="Your items are shipping soon.";
   // static const String my_orders="My Orders";
   static const String current_orders="Current Orders";
@@ -70,9 +70,9 @@ class AppString{
   static const String dark_mode="Dark Mode";
   // static const String help="Help";
   static const String about="About";
-  static const String see_all="See All";
-  static const String promotion_item="Promotion Items";
-  static const String new_product="New Products";
+  // static const String see_all="See All";
+  // static const String promotion_item="Promotion Items";
+  // static const String new_product="New Products";
   static const String verify="Verify";
   static const String otp_verification="Verification";
   static const String otp_verification_message="Enter the verification code sent to ";
