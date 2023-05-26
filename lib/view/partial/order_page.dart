@@ -64,10 +64,10 @@ class _OrderPageState extends State<OrderPage> {
                     unselectedLabelColor: Colors.black45,
                     tabs: [
                       Tab(
-                        text: AppString.current_orders,
+                        text: 'current_orders'.tr,
                       ),
                       Tab(
-                        text: AppString.past_orders,
+                        text: 'past_orders'.tr,
                       ),
                     ],
                   ),
@@ -144,7 +144,7 @@ class _OrderPageState extends State<OrderPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("${AppString.total_items} : ${lst.length}",
+                        Text("${'total_items'.tr} : ${lst.length}",
                             style: Theme.of(context).textTheme.bodyText1),
                         Row(
                           children: [
@@ -243,7 +243,7 @@ class _OrderPageState extends State<OrderPage> {
                   clientId: clientId,
                   currentIndex: 1,
                   subMenuId: 0,
-                  subMenu: 'all_product'.tr,
+                  subMenu: 'ALL',
                 );
               }));
             },

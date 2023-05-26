@@ -75,7 +75,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   RegularText(
-                                      text: AppString.date,
+                                      text: 'order_date'.tr,
                                       color: Colors.black54,
                                       fontWeight: FontWeight.bold),
                                   RegularText(
@@ -94,7 +94,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   RegularText(
-                                      text: AppString.order_no,
+                                      text: 'order_no'.tr,
                                       color: Colors.black54,
                                       fontWeight: FontWeight.bold),
                                   RegularText(
@@ -146,7 +146,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                                     clientId: clientId,
                                     currentIndex: 2,
                                     subMenuId: 0,
-                                    subMenu: 'all_product'.tr,
+                                    subMenu: 'ALL',
                                   );
                                 }), (route) => false);
                               },
@@ -171,7 +171,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                   height: 3,
                 ),
                 SmallText(
-                  text: AppString.ship_item_message,
+                  text: 'ship_item_message'.tr,
                   color: Colors.black54,
                 ),
                 SizedBox(
@@ -189,7 +189,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                           clientId: clientId,
                           currentIndex: 0,
                           subMenuId: 0,
-                          subMenu: 'all_product'.tr,
+                          subMenu: 'ALL',
                         );
                       }), (route) => false);
                     }),

@@ -29,8 +29,8 @@ class _LanguageSettingPageState extends State<LanguageSettingPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: AppColor.primary_700,
-            title: const TitleText(
-              text: AppString.change_language,
+            title: TitleText(
+              text: 'change_language'.tr,
               color: AppColor.white,
             )),
         body: FutureBuilder<String?>(

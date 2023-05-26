@@ -21,7 +21,6 @@ class LocaleString extends Translations{
       'account':'Account',
       'language':'Language',
       'help':'Help',
-      'all_product':'All Product',
       'added_to_cart':'Added to Cart',
       'continue_to_order':'Continue to Order',
       'order_summary':'Order Summary',
@@ -34,6 +33,13 @@ class LocaleString extends Translations{
       'view_your_order':'View Your Order',
       'total_amount':'Total Amount',
       'receive_order_message':'We have received your order.',
+      'ship_item_message':'Your items are shipping soon.',
+      'current_orders':'Current Orders',
+      'past_orders':'Past Orders',
+      'change_language':'Change Language',
+      'total_items':'Total Items',
+      'order_date':'Order Date',
+      'order_no':'Order No',
     },
 
     'my_MM':{
@@ -52,7 +58,6 @@ class LocaleString extends Translations{
       'account':'အကောင့်',
       'language':'ဘာသာစကား',
       'help':'အကူအညီ',
-      'all_product':'အားလုံး',
       'added_to_cart':'ခြင်းထဲထည့်ပြီး',
       'continue_to_order':'ရှေ.ဆက်ရန်',
       'order_summary':'အော်ဒါအသေးစိတ်',
@@ -65,6 +70,13 @@ class LocaleString extends Translations{
       'view_your_order':'အော်ဒါကြည့်ရန်',
       'total_amount':'စုစုပေါင်း',
       'receive_order_message':'အော်ဒါလက်ခံရရှိပါသည်',
+      'ship_item_message':'မကြာမီပို.ဆောင်ပေးပါမည်',
+      'current_orders':'လက်ရှိအော်ဒါများ',
+      'past_orders':'မှာယူဖူးသောအော်ဒါများ',
+      'change_language':'ဘာသာစကားပြောင်းရန်',
+      'total_items':'အရေအတွက်',
+      'order_date':'မှာယူသည့်နေ.',
+      'order_no':'အော်ဒါနံပါတ်',
     }
 
   };
