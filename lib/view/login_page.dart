@@ -11,6 +11,8 @@ import 'package:order_app/view/init_page.dart';
 import 'package:order_app/widget/regular_text.dart';
 import 'package:order_app/widget/small_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import '../network/network_connectivity.dart';
 
 import '../api/apiservice.dart';
 
@@ -30,11 +32,44 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController phone_controller = new TextEditingController();
   TextEditingController password_controller = new TextEditingController();
 
+  Map _event = {ConnectivityResult.none: false};
+  final NetworkConnectivity _networkConnectivity = NetworkConnectivity.instance;
+  String connMessage = '';
+
   @override
   void initState() {
     super.initState();
     phone_controller.text = "09784314734";
     password_controller.text = "123";
+
+    _networkConnectivity.initialize();
+    _networkConnectivity.myStream.listen((event) {
+      _event = event;
+      //print('event $_event');
+
+      switch (_event.keys.toList()[0]) {
+        case ConnectivityResult.mobile:
+          // connMessage =
+          //     _event.values.toList()[0] ? 'Mobile: Online' : 'Mobile: Offline';
+          break;
+        case ConnectivityResult.wifi:
+          // connMessage = _event.values.toList()[0] ? 'WiFi: Online' : 'WiFi: Offline';
+          break;
+        case ConnectivityResult.none:
+        default:
+          connMessage = 'No Internet Connection';
+      }
+
+      setState(() {});
+
+      if (connMessage.length != 0) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+          connMessage,
+          style: TextStyle(fontSize: 30),
+        )));
+      }
+    });
   }
 
   @override
@@ -133,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                 color: AppColor.blueGrey,
               ),
               onTap: (() {
-                Get.to(()=>ForgetPasswordPage());
+                Get.to(() => ForgetPasswordPage());
               }),
             ),
           ),
@@ -220,6 +255,12 @@ class _LoginPageState extends State<LoginPage> {
         ],
       )),
     );
+  }
+
+  @override
+  void dispose() {
+    _networkConnectivity.disposeStream();
+    super.dispose();
   }
 
   bool _isValidateControl() {
