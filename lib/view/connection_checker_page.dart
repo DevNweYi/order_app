@@ -19,7 +19,7 @@ class _ConnectionCheckerPageState extends State<ConnectionCheckerPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _networkConnectivity.initialize();
+    /* _networkConnectivity.initialize();
     _networkConnectivity.myStream.listen((event) {
       _event = event;
       print('event $_event');
@@ -44,7 +44,7 @@ class _ConnectionCheckerPageState extends State<ConnectionCheckerPage> {
         string,
         style: TextStyle(fontSize: 30),
       )));
-    });
+    }); */
   }
 
   @override

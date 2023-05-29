@@ -9,14 +9,16 @@ class NetworkConnectivity {
   static NetworkConnectivity get instance => _instance;
   final _networkConnectivity = Connectivity();
 
-  final _controller = StreamController.broadcast();
+  // final _controller = StreamController.broadcast();
+  
+  late StreamController _controller;
   Stream get myStream => _controller.stream;
 
-  void initialize() async {
+  void initialize(StreamController controller) async {
+    _controller=controller;
     ConnectivityResult result = await _networkConnectivity.checkConnectivity();
     _checkStatus(result);
     _networkConnectivity.onConnectivityChanged.listen((event) {
-      //print(event);
       _checkStatus(event);
     });
   }
@@ -32,7 +34,10 @@ class NetworkConnectivity {
       isOnline = false;
     }
 
-    _controller.sink.add({result: isOnline});
+    if(!_controller.isClosed) {
+      _controller.sink.add({result: isOnline});
+    }
+
   }
 
   void disposeStream() => _controller.close();

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -10,6 +12,7 @@ import 'package:order_app/view/register_page.dart';
 import 'package:order_app/view/init_page.dart';
 import 'package:order_app/widget/regular_text.dart';
 import 'package:order_app/widget/small_text.dart';
+import 'package:order_app/widget/title_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import '../network/network_connectivity.dart';
@@ -29,12 +32,13 @@ class _LoginPageState extends State<LoginPage> {
   _LoginPageState(this.isSaveToken);
 
   ApiService apiService = Get.find();
-  TextEditingController phone_controller = new TextEditingController();
-  TextEditingController password_controller = new TextEditingController();
+  TextEditingController phone_controller = TextEditingController();
+  TextEditingController password_controller = TextEditingController();
 
   Map _event = {ConnectivityResult.none: false};
   final NetworkConnectivity _networkConnectivity = NetworkConnectivity.instance;
   String connMessage = '';
+  final _controller = StreamController.broadcast();
 
   @override
   void initState() {
@@ -42,18 +46,16 @@ class _LoginPageState extends State<LoginPage> {
     phone_controller.text = "09784314734";
     password_controller.text = "123";
 
-    _networkConnectivity.initialize();
+    _networkConnectivity.initialize(_controller);
     _networkConnectivity.myStream.listen((event) {
       _event = event;
-      //print('event $_event');
-
+    
       switch (_event.keys.toList()[0]) {
         case ConnectivityResult.mobile:
-          // connMessage =
-          //     _event.values.toList()[0] ? 'Mobile: Online' : 'Mobile: Offline';
+          connMessage='';
           break;
         case ConnectivityResult.wifi:
-          // connMessage = _event.values.toList()[0] ? 'WiFi: Online' : 'WiFi: Offline';
+          connMessage='';
           break;
         case ConnectivityResult.none:
         default:
@@ -63,11 +65,11 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {});
 
       if (connMessage.length != 0) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(
-          connMessage,
-          style: TextStyle(fontSize: 30),
-        )));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: TitleText(text: connMessage,),
+            backgroundColor:AppColor.accent
+        ));
       }
     });
   }

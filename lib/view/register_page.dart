@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -9,9 +12,11 @@ import 'package:order_app/view/login_page.dart';
 import 'package:order_app/view/otp_page.dart';
 
 import '../api/apiservice.dart';
+import '../network/network_connectivity.dart';
 import '../value/app_string.dart';
 import '../widget/regular_text.dart';
 import '../widget/small_text.dart';
+import '../widget/title_text.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -24,10 +29,42 @@ class _RegisterPageState extends State<RegisterPage> {
   ApiService apiService = Get.find();
   var registerController = Get.put(RegisterController());
 
+  Map _event = {ConnectivityResult.none: false};
+  final NetworkConnectivity _networkConnectivity = NetworkConnectivity.instance;
+  String connMessage = '';
+  final _controller = StreamController.broadcast();
+
   @override
   void initState() {
     requestPermission();
     super.initState();
+
+    _networkConnectivity.initialize(_controller);
+    _networkConnectivity.myStream.listen((event) {
+      _event = event;
+    
+      switch (_event.keys.toList()[0]) {
+        case ConnectivityResult.mobile:
+          connMessage='';
+          break;
+        case ConnectivityResult.wifi:
+          connMessage='';
+          break;
+        case ConnectivityResult.none:
+        default:
+          connMessage = 'No Internet Connection';
+      }
+
+      setState(() {});
+
+      if (connMessage.length != 0) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: TitleText(text: connMessage,),
+            backgroundColor:AppColor.accent
+        ));
+      }
+    });
   }
 
   void requestPermission() async {
@@ -255,6 +292,12 @@ class _RegisterPageState extends State<RegisterPage> {
         ],
       )),
     );
+  }
+
+  @override
+  void dispose() {
+    _networkConnectivity.disposeStream();
+    super.dispose();
   }
 
   bool _isValidateControl() {
