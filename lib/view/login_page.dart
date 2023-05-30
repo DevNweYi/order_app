@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -38,15 +36,14 @@ class _LoginPageState extends State<LoginPage> {
   Map _event = {ConnectivityResult.none: false};
   final NetworkConnectivity _networkConnectivity = NetworkConnectivity.instance;
   String connMessage = '';
-  final _controller = StreamController.broadcast();
 
   @override
   void initState() {
     super.initState();
-    phone_controller.text = "09784314734";
-    password_controller.text = "123";
+    /* phone_controller.text = "09784314734";
+    password_controller.text = "123"; */
 
-    _networkConnectivity.initialize(_controller);
+    _networkConnectivity.initialize();
     _networkConnectivity.myStream.listen((event) {
       _event = event;
     

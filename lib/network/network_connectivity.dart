@@ -9,13 +9,10 @@ class NetworkConnectivity {
   static NetworkConnectivity get instance => _instance;
   final _networkConnectivity = Connectivity();
 
-  // final _controller = StreamController.broadcast();
-  
-  late StreamController _controller;
+  final _controller = StreamController.broadcast();
   Stream get myStream => _controller.stream;
-
-  void initialize(StreamController controller) async {
-    _controller=controller;
+  
+  void initialize() async {
     ConnectivityResult result = await _networkConnectivity.checkConnectivity();
     _checkStatus(result);
     _networkConnectivity.onConnectivityChanged.listen((event) {
