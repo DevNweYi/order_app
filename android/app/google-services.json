@@ -1,49 +1,42 @@
 {
   "project_info": {
-    "project_number": "24676314742",
-    "project_id": "orderapp-72528",
-    "storage_bucket": "orderapp-72528.appspot.com"
+    "project_number": "997282997458",
+    "project_id": "orderapplication-84073",
+    "storage_bucket": "orderapplication-84073.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:24676314742:android:d69204b34ebe922992b957",
+        "mobilesdk_app_id": "1:997282997458:android:9265cfc01efb406dbe790b",
         "android_client_info": {
-          "package_name": "com.example.order_app"
+          "package_name": "com.nweyiaung.order_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "24676314742-dn0d0qtsoe6eldq19ue41j4k9dfrpt97.apps.googleusercontent.com",
+          "client_id": "997282997458-gstitgl2dfv3dqevlrmu1hlif09vt261.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.order_app",
+            "package_name": "com.nweyiaung.order_app",
             "certificate_hash": "a3f741b45c8057da42df5c5937d4fb25acbfc5e2"
           }
         },
         {
-          "client_id": "24676314742-ptmjfaed6hvcna1bmr3p6iomrfhae080.apps.googleusercontent.com",
+          "client_id": "997282997458-9slfr9bt57a90a79citvi2s4432mmf7j.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCQNecv23DDmkgRxv6-O7QvIGf5jHYJyhk"
+          "current_key": "AIzaSyBo1lONFlBs2-TEadONAesIRT791w9uc6w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "24676314742-ptmjfaed6hvcna1bmr3p6iomrfhae080.apps.googleusercontent.com",
+              "client_id": "997282997458-9slfr9bt57a90a79citvi2s4432mmf7j.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "24676314742-hsqcd8qcdgotnf9kuugkj5oaucitcv0f.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.orderApp"
-              }
             }
           ]
         }
