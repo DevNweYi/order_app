@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:order_app/api/apiservice.dart';
@@ -215,7 +215,7 @@ class _ProductPageState extends State<ProductPage> {
                   productController.lstRxProduct[index].Quantity == null ||
                           productController.lstRxProduct[index].Quantity == 0
                       ? Image.asset("assets/images/logo.png")
-                      : Badge(
+                      : badge.Badge(
                           badgeContent: Obx(() => Text(
                               productController.lstRxProduct[index].Quantity
                                   .toString(),

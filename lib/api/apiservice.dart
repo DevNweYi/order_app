@@ -9,7 +9,7 @@ import '../model/product_data.dart';
 import '../model/sub_menu_data.dart';
 part 'apiservice.g.dart';
 
-@RestApi (baseUrl: "http://bosasp-001-site18.gtempurl.com/api/")
+@RestApi(baseUrl: "http://bosasp-001-site18.gtempurl.com/api/")
 // @RestApi (baseUrl: "http://192.168.99.185/InventoryWebService/api/")
 abstract class ApiService{
   factory ApiService(Dio dio) = _ApiService;
