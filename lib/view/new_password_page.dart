@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:order_app/value/app_setting.dart';
 import 'package:order_app/view/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -94,21 +95,19 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
             onTap: () {
               if (_isValidateControl()) {
                 EasyLoading.show(status: AppString.loading);
-                getUserID().then((value) {
-                  value ??= 0;
-                  apiService
-                      .updateClientPassword(value, password_controller.text)
-                      .then((value) async {
-                    EasyLoading.dismiss();
-                    Fluttertoast.showToast(msg: AppString.success);
 
-                    Navigator.pushAndRemoveUntil(context,
-                        MaterialPageRoute(builder: (BuildContext context) {
-                      return LoginPage(
-                        isSaveToken: false,
-                      );
-                    }), (route) => false);
-                  });
+                getUserPhone().then((phone) {
+                  phone ??= "";
+                  AppSetting.updatePassword(phone, password_controller.text);
+                  EasyLoading.dismiss();
+                  Fluttertoast.showToast(msg: AppString.success);
+
+                  Navigator.pushAndRemoveUntil(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return LoginPage(
+                      isSaveToken: false,
+                    );
+                  }), (route) => false);
                 });
               }
             },
@@ -151,7 +150,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
   }
 }
 
-Future<int?> getUserID() async {
+Future<String?> getUserPhone() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  return sharedPreferences.getInt("UserID");
+  return sharedPreferences.getString("UserPhone");
 }

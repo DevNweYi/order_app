@@ -17,6 +17,7 @@ class CartData{
   String? photoUrl;
   @JsonKey(name:"Amount")
   int amount;
+  int? orderId;
 
   CartData({required this.productId,required this.quantity,required this.productName,required this.salePrice,this.photoUrl,required this.amount});
 

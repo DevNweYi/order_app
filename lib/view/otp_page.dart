@@ -176,8 +176,8 @@ class _OTPPageState extends State<OTPPage> {
     );
   }
 
-  _insertClient() {
-    apiService
+  _insertClient() async{
+    /* apiService
         .insertClient(ClientData(
             ClientID: 0,
             ClientName: registerController.name_controller.text,
@@ -191,37 +191,39 @@ class _OTPPageState extends State<OTPPage> {
             DivisionName: "",
             TownshipName: "",
             Token: ""))
-        .then((it) async {
-      if (it != 0) {
+        .then((it) async { */
+      /* if (it != 0) {
         apiService
             .updateClientPassword(
                 it, registerController.password_controller.text)
             .then((value) async {
           EasyLoading.dismiss();
-          Fluttertoast.showToast(msg: AppString.success);
+          Fluttertoast.showToast(msg: AppString.success); */
           SharedPreferences sharedPreferences =
-              await SharedPreferences.getInstance();
+               await SharedPreferences.getInstance();
           sharedPreferences.setBool("IsRegistered", true);
-          sharedPreferences.setInt("UserID", it);
+          sharedPreferences.setInt("UserID", 0);
           sharedPreferences.setString(
               "UserName", registerController.name_controller.text);
           sharedPreferences.setString(
               "UserPhone", registerController.phone_controller.text);
 
           AppSetting.getToken(registerController.phone_controller.text);
+          AppSetting.saveUser(registerController.phone_controller.text,registerController.name_controller.text,registerController.password_controller.text);
 
           Navigator.pushAndRemoveUntil(context,
               MaterialPageRoute(builder: (BuildContext context) {
-            return InitPage(clientId: it);
+            return InitPage(clientId: 0);
           }), (route) => false);
-        });
-      } else {
+       /*  });
+      }  */
+      /* else {
         EasyLoading.dismiss();
         Fluttertoast.showToast(msg: AppString.already_register_phone);
-      }
-    }).catchError((onError) {
+      } */
+   /*  }).catchError((onError) {
       EasyLoading.dismiss();
       Fluttertoast.showToast(msg: onError.toString());
-    });
+    }); */
   }
 }

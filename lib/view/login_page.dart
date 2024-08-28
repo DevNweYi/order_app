@@ -46,13 +46,13 @@ class _LoginPageState extends State<LoginPage> {
     _networkConnectivity.initialize();
     _networkConnectivity.myStream.listen((event) {
       _event = event;
-    
+
       switch (_event.keys.toList()[0]) {
         case ConnectivityResult.mobile:
-          connMessage='';
+          connMessage = '';
           break;
         case ConnectivityResult.wifi:
-          connMessage='';
+          connMessage = '';
           break;
         case ConnectivityResult.none:
         default:
@@ -62,11 +62,11 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {});
 
       if (connMessage.length != 0) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: TitleText(text: connMessage,),
-            backgroundColor:AppColor.accent
-        ));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: TitleText(
+              text: connMessage,
+            ),
+            backgroundColor: AppColor.accent));
       }
     });
   }
@@ -176,39 +176,42 @@ class _LoginPageState extends State<LoginPage> {
               if (_isValidateControl())
                 {
                   EasyLoading.show(status: AppString.loading),
-                  apiService
+                  /*  apiService
                       .checkClient(phone_controller.text, false)
                       .then((it) async {
                     EasyLoading.dismiss();
                     if (it.ClientID == 0) {
                       Fluttertoast.showToast(msg: AppString.not_fount_data);
-                    } else {
-                      if (it.ClientPassword == password_controller.text) {
-                        SharedPreferences sharedPreferences =
-                            await SharedPreferences.getInstance();
-                        sharedPreferences.setBool("IsRegistered", true);
-                        sharedPreferences.setInt("UserID", it.ClientID);
-                        sharedPreferences.setString(
-                            "UserName", it.ClientName.toString());
-                        sharedPreferences.setString(
-                            "UserPhone", it.Phone.toString());
-                        sharedPreferences.setString(
-                            "UserAddress", it.Address.toString());
+                    } else { */
 
-                        if (isSaveToken) {
-                          AppSetting.getToken(it.Phone.toString());
-                        }
+                  AppSetting.checkUser(
+                          phone_controller.text, password_controller.text)
+                      .then((exist) async {
+                    if (exist) {
+                      SharedPreferences sharedPreferences =
+                          await SharedPreferences.getInstance();
+                      sharedPreferences.setBool("IsRegistered", true);
+                      sharedPreferences.setInt("UserID", 0);
 
-                        Navigator.pushReplacement(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => InitPage(
-                                      clientId: it.ClientID,
-                                    )));
-                      } else {
-                        Fluttertoast.showToast(
-                            msg: AppString.incorrect_password);
+                      AppSetting.getName(phone_controller.text).then((value) =>
+                          sharedPreferences.setString("UserName", value));
+
+                      sharedPreferences.setString(
+                          "UserPhone", phone_controller.text);
+                      sharedPreferences.setString("UserAddress", 'Yangon');
+
+                      if (isSaveToken) {
+                        AppSetting.getToken(phone_controller.text);
                       }
+
+                      Navigator.pushReplacement(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => InitPage(
+                                    clientId: 0,
+                                  )));
+                    } else {
+                      Fluttertoast.showToast(msg: AppString.incorrect_password);
                     }
                   })
                 }

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:order_app/api/apiservice.dart';
 import 'package:order_app/database/database_helper.dart';
 import 'package:order_app/model/product_data.dart';
+import 'package:order_app/value/data_constant.dart';
 import 'package:order_app/view/main_page.dart';
 
 import '../controller/product_controller.dart';
@@ -34,6 +35,7 @@ class _InitPageState extends State<InitPage> {
     DatabaseHelper().deleteAllProduct();
     requestPermission();
     initInfo();
+    insertProduct();
     super.initState();
   }
 
@@ -109,39 +111,34 @@ class _InitPageState extends State<InitPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder<List<ProductData>>(
-          future: apiService.getProduct(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<ProductData> lstProduct = snapshot.data!;
-              for (int i = 0; i < lstProduct.length; i++) {
-                DatabaseHelper().insertProduct(ProductData.insertProduct(
-                    ProductID: lstProduct[i].ProductID,
-                    SubMenuID: lstProduct[i].SubMenuID,
-                    SalePrice: lstProduct[i].SalePrice,
-                    Code: lstProduct[i].Code,
-                    ProductName: lstProduct[i].ProductName,
-                    Description: lstProduct[i].Description,
-                    PhotoUrl: lstProduct[i].PhotoUrl));
-              }
-              scheduler.SchedulerBinding.instance
-                  .addPostFrameCallback((timeStamp) {
-                Navigator.pushReplacement(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) => MainPage(
-                              clientId: clientId,
-                              currentIndex: 0,
-                              subMenuId: 0,
-                              subMenu: 'ALL',
-                            )));
-              });
-            } else if (snapshot.hasError) {
-              return RegularText(text: snapshot.error.toString());
-            }
-            return const Center(child: CircularProgressIndicator());
-          }),
-    );
+    return const Scaffold(
+        body: Center(
+      child: CircularProgressIndicator(),
+    ));
+  }
+
+  void insertProduct() {
+    List<ProductData> lstProduct = DataConstant.getProduct();
+    for (int i = 0; i < lstProduct.length; i++) {
+      DatabaseHelper().insertProduct(ProductData.insertProduct(
+          ProductID: lstProduct[i].ProductID,
+          SubMenuID: lstProduct[i].SubMenuID,
+          SalePrice: lstProduct[i].SalePrice,
+          Code: lstProduct[i].Code,
+          ProductName: lstProduct[i].ProductName,
+          Description: lstProduct[i].Description,
+          PhotoUrl: lstProduct[i].PhotoUrl));
+    }
+    scheduler.SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      Navigator.pushReplacement(
+          context,
+          new MaterialPageRoute(
+              builder: (context) => MainPage(
+                    clientId: clientId,
+                    currentIndex: 0,
+                    subMenuId: 0,
+                    subMenu: 'ALL',
+                  )));
+    });
   }
 }

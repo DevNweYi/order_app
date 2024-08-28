@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:order_app/widget/small_text.dart';
 
@@ -22,7 +22,7 @@ class _NotificationViewState extends State<NotificationView> {
   @override
   Widget build(BuildContext context) {
     return count != 0
-        ? Badge(
+        ? badges.Badge(
             badgeContent: SmallText(
               text: count.toString(),
               color: AppColor.white,

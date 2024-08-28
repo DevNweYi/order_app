@@ -42,19 +42,19 @@ class _NotificationPageState extends State<NotificationPage> {
               child: ElevatedButton(
                   onPressed: () {
                     EasyLoading.show(status: AppString.loading);
-                    apiService.deleteAllNotification(clientId).then((value) {
+                    /* apiService.deleteAllNotification(clientId).then((value) {
                       EasyLoading.dismiss();
                       setState(() {
                         isNotificationRead = true;
                       });
-                    });
+                    }); */
                   },
                   child: Text(AppString.mark_all_read)),
             ),
           ),
           !isNotificationRead
-              ? Expanded(
-                  child: FutureBuilder<List<NotificationData>>(
+              ? Expanded(child: _emptyNotification()
+                  /* FutureBuilder<List<NotificationData>>(
                       future: apiService.getNotification(clientId, false),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
@@ -67,7 +67,8 @@ class _NotificationPageState extends State<NotificationPage> {
                           return RegularText(text: snapshot.error.toString());
                         }
                         return const Center(child: CircularProgressIndicator());
-                      }))
+                      })*/
+                  )
               : Container()
         ],
       ),

@@ -7,7 +7,7 @@ part of 'sub_menu_data.dart';
 // **************************************************************************
 
 SubMenuData _$SubMenuDataFromJson(Map<String, dynamic> json) => SubMenuData(
-      subMenuId: json['SubMenuID'] as int,
+      subMenuId: (json['SubMenuID'] as num).toInt(),
       subMenuName: json['SubMenuName'] as String,
     );
 

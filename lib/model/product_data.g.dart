@@ -7,14 +7,14 @@ part of 'product_data.dart';
 // **************************************************************************
 
 ProductData _$ProductDataFromJson(Map<String, dynamic> json) => ProductData(
-      ProductID: json['ProductID'] as int,
-      SubMenuID: json['SubMenuID'] as int,
+      ProductID: (json['ProductID'] as num).toInt(),
+      SubMenuID: (json['SubMenuID'] as num).toInt(),
       Code: json['Code'] as String,
       ProductName: json['ProductName'] as String,
-      SalePrice: json['SalePrice'] as int,
+      SalePrice: (json['SalePrice'] as num).toInt(),
       Description: json['Description'] as String?,
       PhotoUrl: json['PhotoUrl'] as String?,
-      Quantity: json['Quantity'] as int?,
+      Quantity: (json['Quantity'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ProductDataToJson(ProductData instance) =>

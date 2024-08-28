@@ -8,8 +8,8 @@ part of 'notification_data.dart';
 
 NotificationData _$NotificationDataFromJson(Map<String, dynamic> json) =>
     NotificationData(
-      NotiType: json['NotiType'] as int,
-      NotiID: json['NotiID'] as int,
+      NotiType: (json['NotiType'] as num).toInt(),
+      NotiID: (json['NotiID'] as num).toInt(),
       NotiMessage: json['NotiMessage'] as String,
       NotiDateTime: json['NotiDateTime'] as String,
     );

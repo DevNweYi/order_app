@@ -58,13 +58,13 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
               child: SingleChildScrollView(
                   child: Column(
             children: [
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(top: 20, left: 8, right: 8),
                 child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text('delivery_address'.tr,
-                    style: Theme.of(context).textTheme.bodyText2),
-                    ),
+                  alignment: Alignment.centerLeft,
+                  child: Text('delivery_address'.tr,
+                      style: Theme.of(context).textTheme.bodyText2),
+                ),
               ),
               Card(
                   elevation: 8.0,
@@ -81,13 +81,13 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                       return const Center(child: CircularProgressIndicator());
                     },
                   )),
-             Padding(
+              Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text('order_items'.tr,
-                    style: Theme.of(context).textTheme.bodyText2),
-                    ),
+                  alignment: Alignment.centerLeft,
+                  child: Text('order_items'.tr,
+                      style: Theme.of(context).textTheme.bodyText2),
+                ),
               ),
               FutureBuilder<List<CartData>>(
                   future: _lstCartData,
@@ -109,8 +109,8 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                   Text('total'.tr,
-                    style: Theme.of(context).textTheme.headline6),
+                    Text('total'.tr,
+                        style: Theme.of(context).textTheme.headline6),
                     FutureBuilder<int>(
                         future: DatabaseHelper().getTotalCartAmount(),
                         builder: (context, snapshot) {
@@ -120,13 +120,15 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                                         .toString()
                                         .length >
                                     3
-                                ? Text(AppSetting.formatter
-                                        .format(
-                                            cartController.totalAmount.value),
-                                style: Theme.of(context).textTheme.headline6)                             
-                                : Text(cartController.totalAmount.value
-                                        .toString(),
-                                style: Theme.of(context).textTheme.headline6);                              
+                                ? Text(
+                                    AppSetting.formatter.format(
+                                        cartController.totalAmount.value),
+                                    style:
+                                        Theme.of(context).textTheme.headline6)
+                                : Text(
+                                    cartController.totalAmount.value.toString(),
+                                    style:
+                                        Theme.of(context).textTheme.headline6);
                           } else if (snapshot.hasError) {
                             return RegularText(text: snapshot.error.toString());
                           }
@@ -148,22 +150,9 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
                       onPressed: () {
                         if (_isValidateControl()) {
                           EasyLoading.show(status: AppString.loading);
-                          apiService
-                              .sendOrder(new OrderData(
-                                  ClientID: _clientId,
-                                  CustomerID: 0,
-                                  Subtotal: 0,
-                                  Tax: 0,
-                                  TaxAmt: 0,
-                                  Charges: 0,
-                                  ChargesAmt: 0,
-                                  Total: cartController.totalAmount.value,
-                                  Remark: "",
-                                  lstSaleOrderTran: _lstOrder))
+                          DatabaseHelper()
+                              .insertOrder(_lstOrder,cartController.totalAmount.value)
                               .then((orderNumber) {
-                            orderNumber = orderNumber.substring(1);
-                            orderNumber = orderNumber.substring(
-                                0, orderNumber.length - 1);
                             DatabaseHelper().deleteAllCart().then((value) {
                               EasyLoading.dismiss();
                               Navigator.pushReplacement(
@@ -194,8 +183,8 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
 
   Widget _userData(ClientData data) {
     _clientId = data.ClientID;
-    if(data.Address == null) {
-      address_controller.text="";
+    if (data.Address == null) {
+      address_controller.text = "";
     } else {
       address_controller.text = data.Address!;
     }
@@ -238,15 +227,15 @@ class _OrderSummaryPageState extends State<OrderSummaryPage> {
             margin: EdgeInsets.only(top: 20),
             padding: EdgeInsets.only(left: 20, right: 20),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: AppColor.grey_200,
-                /* boxShadow: [
+              borderRadius: BorderRadius.circular(5),
+              color: AppColor.grey_200,
+              /* boxShadow: [
                   BoxShadow(
                       offset: Offset(0, 10),
                       blurRadius: 50,
                       color: AppColor.grey_200)
                 ] */
-                ),
+            ),
             alignment: Alignment.center,
             child: TextField(
               maxLines: null,

@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:order_app/widget/notification_view.dart';
@@ -49,7 +49,7 @@ class _ActionBarViewState extends State<ActionBarView> {
                       ProductController.totalCartItems.value = snapshot.data!;
                       return Obx(() => ProductController.totalCartItems.value !=
                               0
-                          ? Badge(
+                          ? badges.Badge(
                               badgeContent: Obx(() => SmallText(
                                     text: ProductController.totalCartItems.value
                                         .toString(),

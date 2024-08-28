@@ -1,9 +1,10 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:order_app/api/apiservice.dart';
 import 'package:order_app/controller/product_controller.dart';
 import 'package:order_app/database/database_helper.dart';
+import 'package:order_app/value/data_constant.dart';
 import 'package:order_app/widget/action_bar_view.dart';
 import 'package:order_app/widget/small_text.dart';
 import 'package:order_app/widget/title_text.dart';
@@ -165,7 +166,8 @@ class _ProductPageState extends State<ProductPage> {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(_subMenu,style:Theme.of(context).textTheme.bodyText1),
+                    child: Text(_subMenu,
+                        style: Theme.of(context).textTheme.bodyText1),
                     /* SmallText(
                       text: _subMenu,
                       color: Colors.black87,
@@ -189,17 +191,19 @@ class _ProductPageState extends State<ProductPage> {
               ],
             ),
           ),
-          endDrawer: FutureBuilder<List<MenuData>>(
+          endDrawer: _drawer(DataConstant.getMenu())
+          /* FutureBuilder<List<MenuData>>(
               future: apiService.getMenu(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<MenuData> menu = snapshot.data!;
-                  return _drawer(menu);
+                  return _drawer(DataConstant.getMenu());
                 } else if (snapshot.hasError) {
                   return RegularText(text: snapshot.error.toString());
                 }
                 return const Center(child: CircularProgressIndicator());
-              })),
+              }) */
+          ),
     );
   }
 
@@ -215,7 +219,7 @@ class _ProductPageState extends State<ProductPage> {
                   productController.lstRxProduct[index].Quantity == null ||
                           productController.lstRxProduct[index].Quantity == 0
                       ? Image.asset("assets/images/logo.png")
-                      : Badge(
+                      : badges.Badge(
                           badgeContent: Obx(() => Text(
                               productController.lstRxProduct[index].Quantity
                                   .toString(),
@@ -264,16 +268,20 @@ class _ProductPageState extends State<ProductPage> {
                         ),
                         const SizedBox(height: 10),
                         data.SalePrice.toString().length > 3
-                            ? Text( AppSetting.formatter
+                            ? Text(
+                                AppSetting.formatter
                                     .format(data.SalePrice)
-                                    .toString(),style:Theme.of(context).textTheme.headline6)                           
-                            : Text( data.SalePrice.toString(),style:Theme.of(context).textTheme.headline6)                         
+                                    .toString(),
+                                style: Theme.of(context).textTheme.headline6)
+                            : Text(data.SalePrice.toString(),
+                                style: Theme.of(context).textTheme.headline6)
                       ],
                     ),
                     Flexible(child: Image.asset("assets/images/logo.png"))
                   ],
                 ),
-                Text( data.Description.toString(),style:Theme.of(context).textTheme.bodyText1)             
+                Text(data.Description.toString(),
+                    style: Theme.of(context).textTheme.bodyText1)
               ],
             )),
             actions: [
@@ -293,24 +301,24 @@ class _ProductPageState extends State<ProductPage> {
   Widget _drawer(List<MenuData> data) {
     return Drawer(
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                Text('categories'.tr,style:Theme.of(context).textTheme.headline6),                
-                const SizedBox(height: 20),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    return _buildMenuList(data[index]);
-                  },
-                )
-              ],
-            ),
-          ),
-        ));
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            Text('categories'.tr, style: Theme.of(context).textTheme.headline6),
+            const SizedBox(height: 20),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                return _buildMenuList(data[index]);
+              },
+            )
+          ],
+        ),
+      ),
+    ));
   }
 
   Widget _buildMenuList(MenuData list) {

@@ -7,13 +7,13 @@ part of 'client_data.dart';
 // **************************************************************************
 
 ClientData _$ClientDataFromJson(Map<String, dynamic> json) => ClientData(
-      ClientID: json['ClientID'] as int,
+      ClientID: (json['ClientID'] as num).toInt(),
       ClientName: json['ClientName'] as String?,
       ClientPassword: json['ClientPassword'] as String?,
       ShopName: json['ShopName'] as String?,
       Phone: json['Phone'] as String?,
-      DivisionID: json['DivisionID'] as int,
-      TownshipID: json['TownshipID'] as int,
+      DivisionID: (json['DivisionID'] as num).toInt(),
+      TownshipID: (json['TownshipID'] as num).toInt(),
       Address: json['Address'] as String?,
       IsSalePerson: json['IsSalePerson'] as bool,
       DivisionName: json['DivisionName'] as String?,

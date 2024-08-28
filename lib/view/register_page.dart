@@ -191,23 +191,23 @@ class _RegisterPageState extends State<RegisterPage> {
               if (_isValidateControl())
                 {
                   EasyLoading.show(status: AppString.loading),
-                  apiService
+                  /* apiService
                       .checkClientByPhone(
                           registerController.phone_controller.text.trim())
-                      .then((clientData) {
-                    //EasyLoading.dismiss();
-                    if (clientData.ClientID == 0) {
+                      .then((clientData) { */
+              
+                    // if (clientData.ClientID == 0) {
                       RegisterController.instance.phoneAuthentication(
-                          "+95${registerController.phone_controller.text.trim()}");
+                          "+95${registerController.phone_controller.text.trim()}"),
                       Get.to(() => OTPPage(
                             phone: registerController.phone_controller.text,isForgetPassword: false,
-                          ));
-                    } else {
+                          ))
+                    /*} else {
                       EasyLoading.dismiss();
                       Fluttertoast.showToast(
                           msg: AppString.already_register_phone);
                     }
-                  })
+                   }) */
                 }
             },
             child: Container(

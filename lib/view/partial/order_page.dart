@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:order_app/database/database_helper.dart';
 import 'package:order_app/value/app_setting.dart';
 import 'package:order_app/value/app_string.dart';
 import 'package:order_app/widget/small_text.dart';
 import 'package:order_app/widget/title_text.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../../api/apiservice.dart';
 import '../../model/cart_data.dart';
@@ -75,7 +77,7 @@ class _OrderPageState extends State<OrderPage> {
                 Expanded(
                     child: TabBarView(children: [
                   FutureBuilder<List<OrderData>>(
-                    future: apiService.getOrder(clientId, false),
+                    future: DatabaseHelper().getOrder(),
                     builder: ((context, snapshot) {
                       if (snapshot.hasData) {
                         return _currentOrder(snapshot.data!, isHistory: false);
@@ -86,7 +88,7 @@ class _OrderPageState extends State<OrderPage> {
                     }),
                   ),
                   FutureBuilder<List<OrderData>>(
-                    future: apiService.getOrder(clientId, true),
+                    future: DatabaseHelper().getEmptyOrder(),
                     builder: ((context, snapshot) {
                       if (snapshot.hasData) {
                         return _currentOrder(snapshot.data!, isHistory: true);

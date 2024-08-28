@@ -5,6 +5,7 @@ import 'package:order_app/controller/notification_controller.dart';
 import 'package:order_app/model/sub_menu_data.dart';
 import 'package:order_app/value/app_constant.dart';
 import 'package:order_app/value/app_string.dart';
+import 'package:order_app/value/data_constant.dart';
 import 'package:order_app/widget/action_bar_view.dart';
 import 'package:order_app/widget/add_product_dialog.dart';
 import 'package:order_app/widget/regular_text.dart';
@@ -39,7 +40,11 @@ class _HomePageState extends State<HomePage> {
         body: SafeArea(
       child: Column(
         children: [
-          FutureBuilder<int>(
+          ActionBarView(
+            clientId: clientId,
+            pageTitle: 'home'.tr,
+          ),
+          /* FutureBuilder<int>(
               future: apiService.getNotificationCount(clientId),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -53,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                   return RegularText(text: snapshot.error.toString());
                 }
                 return const Center(child: CircularProgressIndicator());
-              }),
+              }), */
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -91,7 +96,8 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      FutureBuilder<List<SubMenuData>>(
+                      _category(DataConstant.getSubMenu())
+                      /* FutureBuilder<List<SubMenuData>>(
                           future: apiService.getSubMenu(),
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
@@ -102,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                             }
                             return const Center(
                                 child: CircularProgressIndicator());
-                          })
+                          }) */
                     ],
                   ),
                   Column(
@@ -192,15 +198,17 @@ class _HomePageState extends State<HomePage> {
                     width: 100,
                     height: 100,
                   ),
-                  Text(item.ProductName,style: TextStyle(fontSize: 16),),                 
+                  Text(
+                    item.ProductName,
+                    style: TextStyle(fontSize: 16),
+                  ),
                   SizedBox(
                     height: 5,
                   ),
                   item.SalePrice > 3
-                      ? Text(                         
-                              "${AppSetting.formatter.format(item.SalePrice)} ${AppConstant.currency}")
-                      : Text(
-                         "${item.SalePrice} ${AppConstant.currency}")
+                      ? Text(
+                          "${AppSetting.formatter.format(item.SalePrice)} ${AppConstant.currency}")
+                      : Text("${item.SalePrice} ${AppConstant.currency}")
                 ],
               ),
             ),
@@ -348,7 +356,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-
             //4th Image of Slider
             Container(
               margin: EdgeInsets.all(6.0),
@@ -361,7 +368,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-
             //5th Image of Slider
             Container(
               margin: EdgeInsets.all(6.0),
@@ -373,7 +379,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
           ],
 
           //Slider Container properties
